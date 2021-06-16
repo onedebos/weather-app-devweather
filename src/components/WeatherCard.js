@@ -4,7 +4,7 @@ import { CELSIUS } from '../utils/constants';
 
 const WeatherCard = ({ temp, date, avgTemp, icon, tempType }) => {
 	return (
-		<Box rounded="lg" backgroundColor="#F4F6FB" py="10" className="hover:bg-red-500">
+		<Box rounded="lg" backgroundColor="#F4F6FB" py="10">
 			<Stack direction="column" justifyContent="center" alignItems="center">
 				<Icon fontSize="xx-large" as={icon} color="#606BEE" />
                 <Text fontWeight="bold" fontSize="lg" color="gray.500">{date}</Text>

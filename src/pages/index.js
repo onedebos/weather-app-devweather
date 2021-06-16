@@ -1,19 +1,13 @@
-import { Slide, Container, Grid, Icon, Stack, Heading, Button } from '@chakra-ui/react';
+import { Slide, Container, Grid, Heading, Button } from '@chakra-ui/react';
 import { SunIcon, ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
-import { useState } from 'react';
 import Sidebar from '../containers/Sidebar';
-import Searchbar from '../components/Searchbar';
-import UserInfo from '../components/UserInfo';
 import Loading from '../components/Loading';
 import WeatherCard from '../components/WeatherCard';
+import Topbar from '../containers/Topbar';
+import { useWeatherSlice } from '../utils/slices/temperature/useWeatherSlice';
 
 const Index = () => {
-	const [activeTempType, setActiveTempType] = useState({
-		celsius: true,
-		fahrenheit: false,
-	});
-
-	const loading = false;
+	const { loading, error, tempType, temperatures } = useWeatherSlice();
 
 	if (loading) {
 		return <Loading />;
@@ -24,14 +18,11 @@ const Index = () => {
 			<Container maxWidth="100%" margin="0" padding="0" transition="ease-in-out" transitionDuration="">
 				<Grid templateColumns="1fr 5fr">
 					{/* Sidebar */}
-					<Sidebar activeTempType={activeTempType} />
+					<Sidebar />
 					{/* Content */}
 					<Container maxWidth="90%">
-						{/* Searchbar */}
-						<Grid templateColumns="5fr 1fr" alignItems="center" gridGap="5">
-							<Searchbar />
-							<UserInfo />
-						</Grid>
+						{/* Topbar */}
+						<Topbar />
 
 						{/* Weather Cards */}
 						<Container mt="20" maxWidth="100%">
@@ -46,11 +37,9 @@ const Index = () => {
 							<Button>Next</Button>
 						</Container>
 
-            {/* Weather Charts */}
-            <Container mt="20" maxWidth="100%">
+						{/* Weather Charts */}
+						<Container mt="20" maxWidth="100%">
 							<Heading> Temperature Chart </Heading>
-
-							
 						</Container>
 					</Container>
 				</Grid>

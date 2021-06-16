@@ -3,19 +3,10 @@ import { Container } from '@chakra-ui/layout';
 import { Flex, Heading, Box } from '@chakra-ui/react';
 import { TriangleUpIcon, TriangleDownIcon } from '@chakra-ui/icons';
 import Image from 'next/image';
-import { useState } from 'react';
-import { CELSIUS, FAHRENHEIT } from '../utils/constants';
+import {useWeatherSlice} from '../utils/slices/temperature/useWeatherSlice'
 
 const Sidebar = () => {
-	const [activeTempType, setActiveTempType] = useState({
-		celsius: true,
-		fahrenheit: false,
-	});
-
-	const triggerTempTypeChange = (tempType) => {
-		if (tempType === CELSIUS) setActiveTempType({ celsius: true, fahrenheit: false });
-		if (tempType === FAHRENHEIT) setActiveTempType({ celsius: false, fahrenheit: true });
-	};
+	const {dispatchSetCelsius, isCelsius} = useWeatherSlice()
 
 	return (
 		<Container height="100vh" maxWidth="100%" backgroundColor="#606BEE">
@@ -31,14 +22,14 @@ const Sidebar = () => {
 			<Box mt="20">
 				<SidebarItem
 					menuItem="Celsius"
-					active={activeTempType.celsius}
-					setActiveTempType={() => triggerTempTypeChange(CELSIUS)}
+					active={isCelsius}
+					setIsCelsius={()=>dispatchSetCelsius(true)}
 					icon={TriangleUpIcon}
 				/>
 				<SidebarItem
 					menuItem="Fahrenheit"
-					active={activeTempType.fahrenheit}
-					setActiveTempType={() => triggerTempTypeChange(FAHRENHEIT)}
+					active={!isCelsius}
+					setIsCelsius={()=>dispatchSetCelsius(false)}
 					icon={TriangleDownIcon}
 				/>
 			</Box>

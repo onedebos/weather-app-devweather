@@ -19,4 +19,6 @@ To run the app on your local machine, follow the steps below:
 
 ## Notes
 
+### Why Chakra-UI?
+
 **Chakra-UI** is the styling framework selected here as it's based on the TailwindCSS framework. A utility first framework allowing us have more control over the CSS we write.
