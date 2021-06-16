@@ -7,7 +7,7 @@ const Searchbar = () => {
 			<Box backgroundColor="#F4F6FB" px="2" py="2" rounded="md">
 				<Icon color="#606BEE" as={Search2Icon} />
 			</Box>
-			<Input ml="0" focusBorderColor="#606BEE" placeholder="Enter a City to start searching e.g Lagos...." />
+			<Input ml="0" focusBorderColor="#606BEE" border="none" placeholder="Enter a City to start searching e.g Lagos...." />
 		</Stack>
 	);
 };

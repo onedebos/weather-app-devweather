@@ -1,6 +1,6 @@
 import SidebarItem from '../components/SidebarItem';
 import { Container } from '@chakra-ui/layout';
-import { Flex, Heading } from '@chakra-ui/react';
+import { Flex, Heading, Box } from '@chakra-ui/react';
 import { TriangleUpIcon, TriangleDownIcon } from '@chakra-ui/icons';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -28,7 +28,7 @@ const Sidebar = () => {
 				<Heading size="sm">DevWeatherWatch</Heading>
 			</Flex>
 
-			<Container mt="20">
+			<Box mt="20">
 				<SidebarItem
 					menuItem="Celsius"
 					active={activeTempType.celsius}
@@ -41,7 +41,7 @@ const Sidebar = () => {
 					setActiveTempType={() => triggerTempTypeChange(FAHRENHEIT)}
 					icon={TriangleDownIcon}
 				/>
-			</Container>
+			</Box>
 		</Container>
 	);
 };
