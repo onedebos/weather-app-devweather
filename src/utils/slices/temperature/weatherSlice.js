@@ -11,7 +11,7 @@ const weatherSlice = createSlice({
 		isCelsius: true,
 		loading: false,
 		error: null,
-		temperatures: null,
+		weather: null,
 		message: ''
 	},
 	reducers: {
@@ -24,8 +24,8 @@ const weatherSlice = createSlice({
 		setLoading: (state, { payload }) => {
 			state.loading = payload;
 		},
-		setTemperatures: (state, { payload }) => {
-			state.temperatures = payload;
+		setWeather: (state, { payload }) => {
+			state.weather = payload;
 		},
 		setMessage: (state, { payload }) => {
 			state.message = payload;
@@ -33,7 +33,7 @@ const weatherSlice = createSlice({
 	},
 });
 
-export const { setCelsius, setError, setLoading, setTemperatures, setMessage } = weatherSlice.actions;
+export const { setCelsius, setError, setLoading, setWeather, setMessage } = weatherSlice.actions;
 
 export const weatherSelector = (state) => state.weather;
 
@@ -44,7 +44,7 @@ export const getWeather = () => {
 	return async (dispatch) => {
 		dispatch(setLoading(true));
 		dispatch(setError(null));
-		// dispatch(setMessage(null));
+		
 		try {
 			const response = await fetchWeatherForecast();
 			const currWeather = await fetchCurrWeather();
@@ -82,7 +82,7 @@ export const getWeather = () => {
 			};
 
 			console.log(weatherData);
-			dispatch(setTemperatures(weatherData));
+			dispatch(setWeather(weatherData));
 			dispatch(setLoading(false));
 		} catch (error) {
 			console.log(error);

@@ -6,3 +6,8 @@ export const calculateAvgDailyTemp = (temperatures) => {
 
 	return sum / 8;
 };
+
+
+export const convertFromCtoF = (celsius) =>{
+	return (celsius * 9/5) + 32;
+}

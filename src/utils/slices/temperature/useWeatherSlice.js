@@ -3,7 +3,7 @@ import { setCelsius, weatherSelector, getWeather } from './weatherSlice';
 
 const useWeatherSlice = () => {
 	const dispatch = useDispatch();
-	const { isCelsius, error, loading, temperatures, message } = useSelector(weatherSelector);
+	const { isCelsius, error, loading, weather, message } = useSelector(weatherSelector);
 
 	return {
 		dispatchSetCelsius: (isCelsius) => dispatch(setCelsius(isCelsius)),
@@ -11,7 +11,7 @@ const useWeatherSlice = () => {
 		loading,
 		error,
 		isCelsius,
-		temperatures,
+		weather,
 		message
 	};
 };
