@@ -81,7 +81,6 @@ export const getWeather = () => {
 				],
 			};
 
-			console.log(weatherData);
 			dispatch(setWeather(weatherData));
 			dispatch(setLoading(false));
 		} catch (error) {

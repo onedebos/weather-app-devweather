@@ -1,32 +1,75 @@
-import { Container, Heading, Button, Grid, Box } from '@chakra-ui/react';
+import { Flex, Heading, Button, Grid, Box, Container } from '@chakra-ui/react';
 import { SunIcon } from '@chakra-ui/icons';
 import WeatherCard from '../components/WeatherCard';
 import { useWeatherSlice } from '../utils/slices/temperature/useWeatherSlice';
 import { convertFromCtoF } from '../utils/helpers';
+import styles from '../utils/styles.module.css';
+import { useState, useRef } from 'react';
 
 const WeatherCards = () => {
 	const { isCelsius, weather } = useWeatherSlice();
 	const currTemp = weather && weather.currentTemp;
 	const city = weather && weather.city;
+	const [pagination, setPagination] = useState(0);
+
+	const pageIndex = useRef(0);
+	const prevRef = useRef(0);
+	const nextRef = useRef(0);
+	const flexRef = useRef(0);
+
+	const scroll = (scrollLeft = true) => {
+		const widthOfCard = document.querySelector('.weather-card').offsetWidth;
+
+		if (scrollLeft) {
+			setPagination((pageIndex.current = pageIndex.current += 1));
+
+			if (pageIndex.current > 2) {
+				pageIndex.current = 2;
+				return;
+			}
+			flexRef.current.querySelector('.scroller').scrollTo({ left: widthOfCard + 25, behavior: 'smooth' });
+		} else {
+			setPagination((pageIndex.current = pageIndex.current -= 1));
+			console.log('prev', pageIndex.current);
+			if (pageIndex.current <= 0) return;
+
+			document.querySelector('.scroller').scrollTo({ right: widthOfCard + 25, behavior: 'smooth' });
+		}
+	};
 
 	return (
-		<Box mt={{base:"5", lg:"20"}} width="100%" maxWidth="100%">
+		<Box mt={{ base: '5', lg: '20' }} width="100%" maxWidth="100%">
 			<Heading mb="2"> Weather Forecast for {city}</Heading>
 
-			<Button display={{base:"none", lg:"block"}}>Prev</Button>
-			<Grid templateColumns={{lg:"1fr 1fr 1fr", base:"1fr"}} alignItems="center" gridGap="5">
-				{weather &&
-					weather.temperatures.map((temp) => (
-						<WeatherCard
-							temp={isCelsius ? currTemp : convertFromCtoF(currTemp)}
-							avgTemp={isCelsius ? temp.avgTemp : convertFromCtoF(temp.avgTemp)}
-							date={temp.date}
-							icon={SunIcon}
-							isCelsius={isCelsius}
-						/>
-					))}
-			</Grid>
-			<Button display={{base:"none", lg:"block"}}>Next</Button>
+			<Flex gridGap="2" mb="2">
+				{pagination > 0 && (
+					<Button ref={prevRef} onClick={() => scroll(false)} backgroundColor="purple.200" display={{ base: 'none', lg: 'block' }}>
+						Prev
+					</Button>
+				)}
+
+				{pagination != 2 && (
+					<Button ref={nextRef} onClick={() => scroll(true)} backgroundColor="purple.500" display={{ base: 'none', lg: 'block' }}>
+						Next
+					</Button>
+				)}
+			</Flex>
+
+			<Box maxWidth="100%">
+				<Flex ref={flexRef} className={`${styles.scrollable} scroller`} gridGap="5" flexDirection={{ base: 'column', lg: 'row' }}>
+					{weather &&
+						weather.temperatures.map((temp, i) => (
+							<WeatherCard
+								key={i}
+								temp={isCelsius ? currTemp : convertFromCtoF(currTemp)}
+								avgTemp={isCelsius ? temp.avgTemp : convertFromCtoF(temp.avgTemp)}
+								date={temp.date}
+								icon={SunIcon}
+								isCelsius={isCelsius}
+							/>
+						))}
+				</Flex>
+			</Box>
 		</Box>
 	);
 };

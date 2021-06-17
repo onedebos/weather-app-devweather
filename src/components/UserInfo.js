@@ -11,7 +11,7 @@ const UserInfo = () => {
 			borderColor="#D0D5DA"
 			mt="10"
 			cursor="pointer"
-			width={{ lg: '75%', base: '100%' }}
+			width={{ lg: '95%', base: '100%' }}
 		>
 			<Stack direction="row" justifyContent="" fontSize="sm" alignItems="center">
 				<Box>

@@ -1,13 +1,13 @@
-# Rainey Weather App
+# DevWeatherWatch Weather App
 
-The Rainey Weather App allows developers see what the Weather is like outside without leaving their homes. The app is built using:
+The DevWeatherWatch Weather App allows developers see what the Weather is like outside without leaving their homes. The app is built using:
 
 - Next JS
 - Chakra UI 
 
 ## Preview
 
-Preview the example live on [StackBlitz](http://stackblitz.com/):
+Preview the example live [here](http://stackblitz.com/):
 
 ## To run the App locally
 
@@ -21,4 +21,4 @@ To run the app on your local machine, follow the steps below:
 
 ### Why Chakra-UI?
 
-**Chakra-UI** is the styling framework selected here as it's based on the TailwindCSS framework. A utility first framework allowing us have more control over the CSS we write.
+**Chakra-UI** is the styling framework selected here. It's a modern framework with accessibility built it ensuring that the applications we build are as accessible as possible.
