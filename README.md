@@ -7,7 +7,7 @@ The DevWeatherWatch Weather App allows developers see what the Weather is like o
 
 ## Preview
 
-Preview the example live [here](http://stackblitz.com/):
+Preview the example live [here](https://weather-app-devweather.vercel.app/):
 
 ## To run the App locally
 
