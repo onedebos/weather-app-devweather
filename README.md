@@ -17,8 +17,13 @@ To run the app on your local machine, follow the steps below:
 - Run `yarn install`
 - Start the application on localhost:3000 by running `yarn dev`
 
+## To run tests
+Ensure you have Jest installed globally. Then run:
+
+``` yarn test```
+
 ## Notes
 
-### Why Chakra-UI?
+### Why Chakra-UI over Material UI?
 
-**Chakra-UI** is the styling framework selected here. It's a modern framework with accessibility built it ensuring that the applications we build are as accessible as possible.
+**Chakra-UI** is the styling framework selected here. It's a modern framework with accessibility built in ensuring that the applications we build are as accessible as possible.

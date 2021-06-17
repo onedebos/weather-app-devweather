@@ -2,6 +2,7 @@ import { ChakraProvider, ColorModeProvider } from '@chakra-ui/react';
 import { Provider } from 'react-redux';
 import store from '../utils/slices/store';
 import theme from '../theme';
+import "../styles/globals.css"
 
 function MyApp({ Component, pageProps }) {
 	return (

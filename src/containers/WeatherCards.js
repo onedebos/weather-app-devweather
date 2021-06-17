@@ -1,10 +1,12 @@
-import { Flex, Heading, Button, Grid, Box, Container } from '@chakra-ui/react';
+import { Flex, Heading, Button, Box } from '@chakra-ui/react';
 import { SunIcon } from '@chakra-ui/icons';
 import WeatherCard from '../components/WeatherCard';
 import { useWeatherSlice } from '../utils/slices/temperature/useWeatherSlice';
 import { convertFromCtoF } from '../utils/helpers';
 import styles from '../utils/styles.module.css';
 import { useState, useRef } from 'react';
+import PerfectScrollbar from 'react-perfect-scrollbar'
+
 
 const WeatherCards = () => {
 	const { isCelsius, weather } = useWeatherSlice();
@@ -13,9 +15,7 @@ const WeatherCards = () => {
 	const [pagination, setPagination] = useState(0);
 
 	const pageIndex = useRef(0);
-	const prevRef = useRef(0);
-	const nextRef = useRef(0);
-	const flexRef = useRef(0);
+	
 
 	const scroll = (scrollLeft = true) => {
 		const widthOfCard = document.querySelector('.weather-card').offsetWidth;
@@ -27,13 +27,13 @@ const WeatherCards = () => {
 				pageIndex.current = 2;
 				return;
 			}
-			flexRef.current.querySelector('.scroller').scrollTo({ left: widthOfCard + 25, behavior: 'smooth' });
+			document.querySelector('.scroller').scrollTo({ left: widthOfCard + 25, behavior: 'smooth', top: 0 });
+			
 		} else {
 			setPagination((pageIndex.current = pageIndex.current -= 1));
-			console.log('prev', pageIndex.current);
 			if (pageIndex.current <= 0) return;
 
-			document.querySelector('.scroller').scrollTo({ right: widthOfCard + 25, behavior: 'smooth' });
+			document.querySelector('.scroller').scrollTo({ right: widthOfCard + 25, behavior: 'smooth', top: 0 });
 		}
 	};
 
@@ -43,21 +43,24 @@ const WeatherCards = () => {
 
 			<Flex gridGap="2" mb="2">
 				{pagination > 0 && (
-					<Button ref={prevRef} onClick={() => scroll(false)} backgroundColor="purple.200" display={{ base: 'none', lg: 'block' }}>
+					<Button  onClick={() => scroll(false)} backgroundColor="purple.200" display={{ base: 'none', lg: 'block' }}>
 						Prev
 					</Button>
 				)}
 
 				{pagination != 2 && (
-					<Button ref={nextRef} onClick={() => scroll(true)} backgroundColor="purple.500" display={{ base: 'none', lg: 'block' }}>
+					<Button onClick={() => scroll(true)} backgroundColor="purple.500" display={{ base: 'none', lg: 'block' }}>
 						Next
 					</Button>
 				)}
 			</Flex>
 
 			<Box maxWidth="100%">
-				<Flex ref={flexRef} className={`${styles.scrollable} scroller`} gridGap="5" flexDirection={{ base: 'column', lg: 'row' }}>
+			<PerfectScrollbar>
+				<Flex className={`${styles.scrollable} scroller`} gridGap="5" flexDirection={{ base: 'column', lg: 'row' }}>
+				
 					{weather &&
+					
 						weather.temperatures.map((temp, i) => (
 							<WeatherCard
 								key={i}
@@ -68,7 +71,9 @@ const WeatherCards = () => {
 								isCelsius={isCelsius}
 							/>
 						))}
+						
 				</Flex>
+				</PerfectScrollbar>
 			</Box>
 		</Box>
 	);
