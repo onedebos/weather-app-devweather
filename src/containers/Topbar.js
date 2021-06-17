@@ -4,7 +4,7 @@ import UserInfo from '../components/UserInfo';
 
 const Topbar = () => {
 	return (
-		<Grid templateColumns="5fr 1fr" alignItems="center" gridGap="5">
+		<Grid templateColumns={{base:"6fr", lg:"5fr 1fr"}} alignItems="center" gridGap={{base: "0", lg:"5"}}>
 			<Searchbar />
 			<UserInfo />
 		</Grid>

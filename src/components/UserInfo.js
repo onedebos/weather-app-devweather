@@ -3,7 +3,16 @@ import { ChevronDownIcon } from '@chakra-ui/icons';
 
 const UserInfo = () => {
 	return (
-		<Box border="1px" p="2" rounded="md" borderColor="#D0D5DA" mt="10" cursor="pointer" width="75%">
+		<Box
+			display={{ lg: 'block', base: 'none' }}
+			border="1px"
+			p="2"
+			rounded="md"
+			borderColor="#D0D5DA"
+			mt="10"
+			cursor="pointer"
+			width={{ lg: '75%', base: '100%' }}
+		>
 			<Stack direction="row" justifyContent="" fontSize="sm" alignItems="center">
 				<Box>
 					<Avatar size="xs" />

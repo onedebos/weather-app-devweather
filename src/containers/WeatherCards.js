@@ -1,4 +1,4 @@
-import { Container, Heading, Button, Grid } from '@chakra-ui/react';
+import { Container, Heading, Button, Grid, Box } from '@chakra-ui/react';
 import { SunIcon } from '@chakra-ui/icons';
 import WeatherCard from '../components/WeatherCard';
 import { useWeatherSlice } from '../utils/slices/temperature/useWeatherSlice';
@@ -10,11 +10,11 @@ const WeatherCards = () => {
 	const city = weather && weather.city;
 
 	return (
-		<Container mt="20" maxWidth="100%">
-			<Heading> Weather Forecast for {city}</Heading>
+		<Box mt={{base:"5", lg:"20"}} width="100%" maxWidth="100%">
+			<Heading mb="2"> Weather Forecast for {city}</Heading>
 
-			<Button>Prev</Button>
-			<Grid templateColumns="1fr 1fr 1fr" alignItems="center" gridGap="5">
+			<Button display={{base:"none", lg:"block"}}>Prev</Button>
+			<Grid templateColumns={{lg:"1fr 1fr 1fr", base:"1fr"}} alignItems="center" gridGap="5">
 				{weather &&
 					weather.temperatures.map((temp) => (
 						<WeatherCard
@@ -26,8 +26,8 @@ const WeatherCards = () => {
 						/>
 					))}
 			</Grid>
-			<Button>Next</Button>
-		</Container>
+			<Button display={{base:"none", lg:"block"}}>Next</Button>
+		</Box>
 	);
 };
 
