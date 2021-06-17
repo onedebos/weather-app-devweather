@@ -5,8 +5,6 @@ import { useWeatherSlice } from '../utils/slices/temperature/useWeatherSlice';
 import { convertFromCtoF } from '../utils/helpers';
 import styles from '../utils/styles.module.css';
 import { useState, useRef } from 'react';
-import PerfectScrollbar from 'react-perfect-scrollbar'
-
 
 const WeatherCards = () => {
 	const { isCelsius, weather } = useWeatherSlice();
@@ -15,7 +13,6 @@ const WeatherCards = () => {
 	const [pagination, setPagination] = useState(0);
 
 	const pageIndex = useRef(0);
-	
 
 	const scroll = (scrollLeft = true) => {
 		const widthOfCard = document.querySelector('.weather-card').offsetWidth;
@@ -28,7 +25,6 @@ const WeatherCards = () => {
 				return;
 			}
 			document.querySelector('.scroller').scrollTo({ left: widthOfCard + 25, behavior: 'smooth', top: 0 });
-			
 		} else {
 			setPagination((pageIndex.current = pageIndex.current -= 1));
 			if (pageIndex.current <= 0) return;
@@ -43,7 +39,7 @@ const WeatherCards = () => {
 
 			<Flex gridGap="2" mb="2">
 				{pagination > 0 && (
-					<Button  onClick={() => scroll(false)} backgroundColor="purple.200" display={{ base: 'none', lg: 'block' }}>
+					<Button onClick={() => scroll(false)} backgroundColor="purple.200" display={{ base: 'none', lg: 'block' }}>
 						Prev
 					</Button>
 				)}
@@ -56,11 +52,8 @@ const WeatherCards = () => {
 			</Flex>
 
 			<Box maxWidth="100%">
-			<PerfectScrollbar>
 				<Flex className={`${styles.scrollable} scroller`} gridGap="5" flexDirection={{ base: 'column', lg: 'row' }}>
-				
 					{weather &&
-					
 						weather.temperatures.map((temp, i) => (
 							<WeatherCard
 								key={i}
@@ -71,9 +64,7 @@ const WeatherCards = () => {
 								isCelsius={isCelsius}
 							/>
 						))}
-						
 				</Flex>
-				</PerfectScrollbar>
 			</Box>
 		</Box>
 	);
