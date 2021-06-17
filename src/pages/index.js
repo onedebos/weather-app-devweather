@@ -5,9 +5,19 @@ import WeatherCards from '../containers/WeatherCards';
 import Topbar from '../containers/Topbar';
 import Chart from '../containers/Chart';
 import { useWeatherSlice } from '../utils/slices/temperature/useWeatherSlice';
+import { useEffect } from 'react';
 
 const Index = () => {
-	const { loading, error, tempType, temperatures } = useWeatherSlice();
+	const { loading, error, dispatchGetWeather, temperatures } = useWeatherSlice();
+
+	useEffect(() => {
+		let mounted = true;
+
+		if (mounted) {
+			return dispatchGetWeather();
+		}
+		return () => (mounted = false);
+	}, []);
 
 	if (loading) {
 		return <Loading />;
