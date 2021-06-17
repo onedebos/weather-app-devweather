@@ -5,7 +5,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest"
+    "test": "jest",
+    "test2": "riteway src/tests/**/*-test.js"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.0",
