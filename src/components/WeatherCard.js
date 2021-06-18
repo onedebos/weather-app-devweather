@@ -1,3 +1,4 @@
+import React from 'react'
 import { Box, Icon, Stack, Text } from '@chakra-ui/react';
 
 const WeatherCard = ({ temp, date, avgTemp, icon, isCelsius }) => {
@@ -10,8 +11,8 @@ const WeatherCard = ({ temp, date, avgTemp, icon, isCelsius }) => {
 				</Text>
 				<Text textAlign="center" fontWeight="semibold">
 					{' '}
-					<span fontWeight="semibold">Temperature now:</span> {Math.round(temp)}
-					{isCelsius ? '°C' : '°F'}
+					<span fontWeight="semibold">Temperature now:</span> <span className="temp-now">{Math.round(temp)}
+					{isCelsius ? '°C' : '°F'}</span>
 				</Text>
 				<Text textAlign="center" color="gray.500">
 					<span fontWeight="semibold">Avg Daily Temperature:</span> {Math.round(avgTemp)}
