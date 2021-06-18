@@ -1,6 +1,5 @@
 import { Box, Stack, Avatar, Icon, Text } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
-import React from 'react'
 
 const UserInfo = () => {
 	return (

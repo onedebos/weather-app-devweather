@@ -1,6 +1,5 @@
 import { Box, Input, Icon, Stack } from '@chakra-ui/react';
 import { Search2Icon } from '@chakra-ui/icons';
-import React from 'react'
 
 const Searchbar = () => {
 	return (

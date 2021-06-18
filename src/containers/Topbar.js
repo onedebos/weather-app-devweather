@@ -1,7 +1,6 @@
 import { Grid } from '@chakra-ui/react';
 import Searchbar from '../components/Searchbar';
 import UserInfo from '../components/UserInfo';
-import React from 'react'
 
 const Topbar = () => {
 	return (

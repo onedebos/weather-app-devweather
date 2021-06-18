@@ -5,7 +5,6 @@ import WeatherCards from '../containers/WeatherCards';
 import Topbar from '../containers/Topbar';
 import { useWeatherSlice } from '../utils/slices/temperature/useWeatherSlice';
 import { useEffect } from 'react';
-import React from 'react'
 
 const Index = () => {
 	const { loading, error, dispatchGetWeather, temperatures } = useWeatherSlice();

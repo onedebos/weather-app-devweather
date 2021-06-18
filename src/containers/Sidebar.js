@@ -1,11 +1,12 @@
-import SidebarItem from '../components/SidebarItem';
 import { Container } from '@chakra-ui/layout';
 import { Flex, Heading, Box, useToast } from '@chakra-ui/react';
 import { TriangleUpIcon, TriangleDownIcon } from '@chakra-ui/icons';
-import Image from 'next/image';
 import { useWeatherSlice } from '../utils/slices/temperature/useWeatherSlice';
 import { CELSIUS, FAHRENHEIT } from '../utils/constants';
-import React from 'react'
+import Image from 'next/image';
+import SidebarItem from '../components/SidebarItem';
+
+
 
 const Sidebar = () => {
 	const { dispatchSetCelsius, isCelsius } = useWeatherSlice();

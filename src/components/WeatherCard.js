@@ -1,4 +1,3 @@
-import React from 'react'
 import { Box, Icon, Stack, Text } from '@chakra-ui/react';
 
 const WeatherCard = ({ temp, date, avgTemp, icon, isCelsius }) => {

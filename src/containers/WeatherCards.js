@@ -6,7 +6,6 @@ import { useState, useRef } from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react'
 import WeatherCard from '../components/WeatherCard';
 import styles from '../utils/styles.module.css';
-import React from 'react'
 
 
 
