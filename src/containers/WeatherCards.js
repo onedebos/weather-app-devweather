@@ -69,7 +69,6 @@ const WeatherCards = () => {
 					navigation={{
 						nextEl: '.next',
 						prevEl: '.prev',
-
 					}}
 				>
 					{weather &&
