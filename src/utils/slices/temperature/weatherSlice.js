@@ -40,43 +40,45 @@ export const weatherSelector = (state) => state.weather;
 export default weatherSlice.reducer;
 
 // Get Weather
-export const getWeather = () => {
+export const getWeather = (location) => {
 	return async (dispatch) => {
 		dispatch(setLoading(true));
 		dispatch(setError(null));
 		
 		try {
-			const response = await fetchWeatherForecast();
-			const currWeather = await fetchCurrWeather();
+			const response = await fetchWeatherForecast(location);
+			const currWeather = await fetchCurrWeather(location);
+
+			const {city, list} = response.data
 
 			const weatherData = {
-				city: response.data.city.name,
+				city: city.name,
 				currentTemp: currWeather.data.main.temp,
 				temperatures: [
 					{
-						date: moment(response.data.list[0].dt_txt).format('dddd, MMMM Do'),
-						avgTemp: calculateAvgDailyTemp(response.data.list.slice(0, 7)),
-						tempAtDiffTimes: response.data.list.slice(0, 7)
+						date: moment(list[0].dt_txt).format('dddd, MMMM Do'),
+						avgTemp: calculateAvgDailyTemp(list.slice(0, 7)),
+						tempAtDiffTimes: list.slice(0, 7)
 					},
 					{
-						date: moment(response.data.list[8].dt_txt).format('dddd, MMMM Do'),
-						avgTemp: calculateAvgDailyTemp(response.data.list.slice(8, 15)),
-						tempAtDiffTimes: response.data.list.slice(8, 15)
+						date: moment(list[8].dt_txt).format('dddd, MMMM Do'),
+						avgTemp: calculateAvgDailyTemp(list.slice(8, 15)),
+						tempAtDiffTimes: list.slice(8, 15)
 					},
 					{
-						date: moment(response.data.list[16].dt_txt).format('dddd, MMMM Do'),
-						avgTemp: calculateAvgDailyTemp(response.data.list.slice(16, 23)),
-						tempAtDiffTimes: response.data.list.slice(16, 23)
+						date: moment(list[16].dt_txt).format('dddd, MMMM Do'),
+						avgTemp: calculateAvgDailyTemp(list.slice(16, 23)),
+						tempAtDiffTimes: list.slice(16, 23)
 					},
 					{
-						date: moment(response.data.list[24].dt_txt).format('dddd, MMMM Do'),
-						avgTemp: calculateAvgDailyTemp(response.data.list.slice(24, 31)),
-						tempAtDiffTimes: response.data.list.slice(24, 31)
+						date: moment(list[24].dt_txt).format('dddd, MMMM Do'),
+						avgTemp: calculateAvgDailyTemp(list.slice(24, 31)),
+						tempAtDiffTimes: list.slice(24, 31)
 					},
 					{
-						date: moment(response.data.list[32].dt_txt).format('dddd, MMMM Do'),
-						avgTemp: calculateAvgDailyTemp(response.data.list.slice(32, 39)),
-						tempAtDiffTimes: response.data.list.slice(32, 39)
+						date: moment(list[32].dt_txt).format('dddd, MMMM Do'),
+						avgTemp: calculateAvgDailyTemp(list.slice(32, 39)),
+						tempAtDiffTimes: list.slice(32, 39)
 					},
 				],
 			};

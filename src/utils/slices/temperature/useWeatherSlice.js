@@ -7,7 +7,7 @@ const useWeatherSlice = () => {
 
 	return {
 		dispatchSetCelsius: (isCelsius) => dispatch(setCelsius(isCelsius)),
-		dispatchGetWeather: () => dispatch(getWeather()),
+		dispatchGetWeather: (location = "Munich,de") => dispatch(getWeather(location)),
 		loading,
 		error,
 		isCelsius,
