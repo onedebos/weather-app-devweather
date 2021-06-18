@@ -31,7 +31,13 @@ const WeatherCards = () => {
 
 	return (
 		<Box mt={{ base: '5', lg: '20' }} width="100%" maxWidth="100%">
-			<Heading mb="2" textAlign={{base: "center", lg:"left"}}> Weather Forecast for <Text display="inline" color="#606BEE">{city}</Text></Heading>
+			<Heading mb="2" textAlign={{ base: 'center', lg: 'left' }}>
+				{' '}
+				Weather Forecast for{' '}
+				<Text display="inline" color="#606BEE">
+					{city}
+				</Text>
+			</Heading>
 			<Flex gridGap="2" mb="2">
 				<Button
 					className="prev"

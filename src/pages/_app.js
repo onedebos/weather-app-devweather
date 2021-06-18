@@ -4,7 +4,6 @@ import store from '../utils/slices/store';
 import theme from '../theme';
 import 'swiper/swiper-bundle.min.css';
 
-
 function MyApp({ Component, pageProps }) {
 	return (
 		<ChakraProvider resetCSS theme={theme}>
