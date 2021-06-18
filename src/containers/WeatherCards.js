@@ -1,10 +1,15 @@
 import { Flex, Heading, Button, Box } from '@chakra-ui/react';
 import { SunIcon } from '@chakra-ui/icons';
-import WeatherCard from '../components/WeatherCard';
 import { useWeatherSlice } from '../utils/slices/temperature/useWeatherSlice';
 import { convertFromCtoF } from '../utils/helpers';
-import styles from '../utils/styles.module.css';
 import { useState, useRef } from 'react';
+import {Swiper, SwiperSlide} from 'swiper/react'
+import WeatherCard from '../components/WeatherCard';
+import styles from '../utils/styles.module.css';
+import React from 'react'
+
+
+
 
 const WeatherCards = () => {
 	const { isCelsius, weather } = useWeatherSlice();

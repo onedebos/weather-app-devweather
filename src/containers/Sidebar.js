@@ -5,6 +5,7 @@ import { TriangleUpIcon, TriangleDownIcon } from '@chakra-ui/icons';
 import Image from 'next/image';
 import { useWeatherSlice } from '../utils/slices/temperature/useWeatherSlice';
 import { CELSIUS, FAHRENHEIT } from '../utils/constants';
+import React from 'react'
 
 const Sidebar = () => {
 	const { dispatchSetCelsius, isCelsius } = useWeatherSlice();

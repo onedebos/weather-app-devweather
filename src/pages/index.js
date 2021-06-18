@@ -3,9 +3,9 @@ import Sidebar from '../containers/Sidebar';
 import Loading from '../components/Loading';
 import WeatherCards from '../containers/WeatherCards';
 import Topbar from '../containers/Topbar';
-import Chart from '../containers/Chart';
 import { useWeatherSlice } from '../utils/slices/temperature/useWeatherSlice';
 import { useEffect } from 'react';
+import React from 'react'
 
 const Index = () => {
 	const { loading, error, dispatchGetWeather, temperatures } = useWeatherSlice();
@@ -32,7 +32,6 @@ const Index = () => {
 				<Container maxWidth="90%">
 					<Topbar />
 					<WeatherCards />
-					<Chart />
 				</Container>
 			</Grid>
 		</Box>
