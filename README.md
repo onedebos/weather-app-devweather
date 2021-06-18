@@ -18,9 +18,7 @@ To run the app on your local machine, follow the steps below:
 - Start the application on localhost:3000 by running `yarn dev`
 
 ## To run tests
-Ensure you have Jest installed globally. Then run:
-
-``` yarn test```
+Simply run `yarn test` from your terminal to run tests that generate a coverage report using nyc. To run tests without coverage reports, run `yarn test-nocov`
 
 ## Notes
 

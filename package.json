@@ -5,8 +5,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "riteway -r @babel/register 'src/**/*.test.js'",
-    "test2": "nyc riteway -r @babel/register 'src/**/*.test.js' | tap-nirvana"
+    "test": "nyc riteway -r @babel/register 'src/**/*.test.js' | tap-nirvana",
+    "test-nocov": "riteway -r @babel/register 'src/**/*.test.js'"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.0",
@@ -20,7 +20,6 @@
     "next": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-perfect-scrollbar": "^1.5.8",
     "react-redux": "^7.2.4"
   },
   "license": "MIT",

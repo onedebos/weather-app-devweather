@@ -1,4 +1,4 @@
-import { Icon, Text, Container, Box, Stack } from '@chakra-ui/react';
+import { Icon, Text, Box } from '@chakra-ui/react';
 
 
 const SidebarItem = ({ menuItem, active, setIsCelsius, icon }) => {
