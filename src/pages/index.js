@@ -1,4 +1,4 @@
-import { Container, Grid, Box } from '@chakra-ui/react';
+import { Container, Grid, Box, Fade } from '@chakra-ui/react';
 import Sidebar from '../containers/Sidebar';
 import Loading from '../components/Loading';
 import WeatherCards from '../containers/WeatherCards';
@@ -23,17 +23,19 @@ const Index = () => {
 	}
 
 	return (
-		<Box maxWidth="100%">
-			<Grid templateColumns={{ base: '6fr', lg: '1fr 5fr' }}>
-				{/* Sidebar */}
-				<Sidebar />
-				{/* Content */}
-				<Container maxWidth="90%">
-					<Topbar />
-					<WeatherCards />
-				</Container>
-			</Grid>
-		</Box>
+		<Fade in={true}>
+			<Box maxWidth="100%">
+				<Grid templateColumns={{ base: '6fr', lg: '1fr 5fr' }}>
+					{/* Sidebar */}
+					<Sidebar />
+					{/* Content */}
+					<Container maxWidth="90%">
+						<Topbar />
+						<WeatherCards />
+					</Container>
+				</Grid>
+			</Box>
+		</Fade>
 	);
 };
 
