@@ -1,4 +1,4 @@
-import { Flex, Heading, Button, Box, Container } from '@chakra-ui/react';
+import { Flex, Heading, Button, Box, Text, Stack } from '@chakra-ui/react';
 import { SunIcon } from '@chakra-ui/icons';
 import { useWeatherSlice } from '../utils/slices/temperature/useWeatherSlice';
 import { convertFromCtoF } from '../utils/helpers';
@@ -31,8 +31,7 @@ const WeatherCards = () => {
 
 	return (
 		<Box mt={{ base: '5', lg: '20' }} width="100%" maxWidth="100%">
-			<Heading mb="2"> Weather Forecast for {city}</Heading>
-
+			<Heading mb="2" textAlign={{base: "center", lg:"left"}}> Weather Forecast for <Text display="inline" color="#606BEE">{city}</Text></Heading>
 			<Flex gridGap="2" mb="2">
 				<Button
 					className="prev"
@@ -53,7 +52,7 @@ const WeatherCards = () => {
 				</Button>
 			</Flex>
 
-			<Box maxWidth="100%">
+			<Box display={{ base: 'none', lg: 'block' }} maxWidth="100%">
 				<Swiper
 					spaceBetween={50}
 					slidesPerView={3}
@@ -65,9 +64,8 @@ const WeatherCards = () => {
 					{weather &&
 						weather.temperatures.map((temp, i) => {
 							return (
-								<SwiperSlide>
+								<SwiperSlide key={i}>
 									<WeatherCard
-										key={i}
 										temp={isCelsius ? currTemp : convertFromCtoF(currTemp)}
 										avgTemp={isCelsius ? temp.avgTemp : convertFromCtoF(temp.avgTemp)}
 										date={temp.date}
@@ -78,6 +76,22 @@ const WeatherCards = () => {
 							);
 						})}
 				</Swiper>
+			</Box>
+
+			<Box display={{ base: 'block', lg: 'none' }} pb="10">
+				<Stack gridGap="5" direction="column">
+					{weather &&
+						weather.temperatures.map((temp, i) => (
+							<WeatherCard
+								key={i}
+								temp={isCelsius ? currTemp : convertFromCtoF(currTemp)}
+								avgTemp={isCelsius ? temp.avgTemp : convertFromCtoF(temp.avgTemp)}
+								date={temp.date}
+								icon={SunIcon}
+								isCelsius={isCelsius}
+							/>
+						))}
+				</Stack>
 			</Box>
 		</Box>
 	);

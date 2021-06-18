@@ -24,7 +24,7 @@ const Sidebar = () => {
 	};
 
 	return (
-		<Container height={{ lg: '100vh' }} maxWidth="100%" backgroundColor="#606BEE" pb={{ base: '5', lg: '0' }}>
+		<Container height={{ lg: '100vh' }} maxWidth="100%" width={{base: "100%", lg:"300px"}} backgroundColor="#606BEE" pb={{ base: '5', lg: '0' }}>
 			<Flex mt="10" color="white" gridGap="2" alignItems="center" justifyContent={{ base: 'center', lg: 'start' }}>
 				<Image width="30" height="30" src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" />
 				<Heading size="sm">DevWeatherWatch</Heading>
