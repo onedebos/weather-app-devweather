@@ -7,7 +7,7 @@ import { useWeatherSlice } from '../utils/slices/temperature/useWeatherSlice';
 import { useEffect } from 'react';
 
 const Index = () => {
-	const { loading, error, dispatchGetWeather, temperatures } = useWeatherSlice();
+	const { loading, dispatchGetWeather } = useWeatherSlice();
 
 	useEffect(() => {
 		let mounted = true;
