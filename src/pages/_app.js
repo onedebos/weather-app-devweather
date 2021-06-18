@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import store from '../utils/slices/store';
 import theme from '../theme';
 import 'swiper/swiper-bundle.min.css';
+import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
 	return (

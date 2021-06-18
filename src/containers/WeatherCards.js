@@ -1,4 +1,4 @@
-import { Flex, Heading, Button, Box, Text, Stack } from '@chakra-ui/react';
+import { Flex, Heading, Button, Box, Text, Stack, Container } from '@chakra-ui/react';
 import { SunIcon } from '@chakra-ui/icons';
 import { useWeatherSlice } from '../utils/slices/temperature/useWeatherSlice';
 import { convertFromCtoF } from '../utils/helpers';
@@ -41,18 +41,22 @@ const WeatherCards = () => {
 			<Flex gridGap="2" mb="2">
 				<Button
 					className="prev"
+					width="100px"
+					colorScheme="messenger"
 					onClick={() => scroll(false)}
-					backgroundColor="purple.200"
 					display={{ base: 'none', lg: pagination > 0 ? 'block' : 'none' }}
+					color="white"
 				>
 					Prev
 				</Button>
 
 				<Button
 					className="next"
+					width="100px"
 					onClick={() => scroll(true)}
-					backgroundColor="purple.500"
+					colorScheme="purple"
 					display={{ base: 'none', lg: pagination != 2 ? 'block' : 'none' }}
+					color="white"
 				>
 					Next
 				</Button>
@@ -65,6 +69,7 @@ const WeatherCards = () => {
 					navigation={{
 						nextEl: '.next',
 						prevEl: '.prev',
+
 					}}
 				>
 					{weather &&

@@ -25,7 +25,7 @@ const Sidebar = () => {
 		<Container
 			height={{ lg: '100vh' }}
 			maxWidth="100%"
-			width={{ base: '100%', lg: '300px' }}
+			width={{ base: '100%', lg: '320px' }}
 			backgroundColor="#606BEE"
 			pb={{ base: '5', lg: '0' }}
 		>
